@@ -1,0 +1,61 @@
+**** REPLACE *?* with an opening or closing bracket / braces / squiqly brace ****
+
+(1) Make sure you have a supported camera.  The logitech C270 is used in this video.
+  It's in the documentation here:
+https://github.com/phrack/ShootOFF/wiki/FAQ
+  
+
+(2) Download 2 items: 
+2a - the lastest Java JDK by selecting the "Linux x64 jdk-8u121-linux-x64.tar.gz" option
+Link: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+*make sure your agree to Oracle's License to initiate the download
+
+2b - the latest ShootOFF software from:
+http://shootoffapp.com/
+
+(3) Create a directory called ShootOFF in your home folder
+
+(4) Move and Extract the ShootOFF.zip into that folder
+
+(5) Open the terminal and create a directory in /usr named java by entering:
+sudo mkdir /usr/java
+You will be prompted to enter your password (the same password you use to log into your 
+account with) 
+
+(6) Extract the contents of the java.tar file into the directory that was just created:
+cd ~/Downloads && sudo tar xvzf jdk-8u121-linux-x64.tar.gz -C /usr/java
+
+(7) Set the JAVA_HOME environmental variable by typing the following command: 
+echo "JAVA_HOME=/usr/java/jdk1.8.0_121/" >> ~/.profile
+
+(8) Refresh the environental variables by sourcing them again: 
+source ~/.profile
+
+(9) Update the environmental variables 
+sudo update-alternatives --install /usr/bin/java java *?*{JAVA_HOME%*/}/bin/java 20000
+sudo update-alternatives --install /usr/bin/javac javac ${JAVA_HOME%*/}/bin/javac 20000
+
+update-alternatives --config java
+
+(9) Test to ensure that the last 8 steps were successful.  This is just a point to verify
+that the previous steps were completed correctly.  The software should load, and an error 
+should display "Cannot Open Webcam"
+cat 
+(10) Add this function to .bashrc to launch ShootOFF correctly 
+
+ShootOFF() {
+	export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libv4l/v4l1compat.so;
+	cd ~/ShootOFF/shootoff-3.10-final;
+	java -jar ~/ShootOFF/shootoff-3.10-final/ShootOFF.jar;
+}
+
+(11) Reload .bashrc 
+source ~/.bashrc 
+
+(11) Test it!  
+
+
+
+
+
+
