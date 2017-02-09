@@ -74,7 +74,8 @@ EOL
 cat $tmpSHOOTOFF/updateBashRC.txt >> ~/.bashrc
 source ~/.bashrc
 
-
+# TODO: create this function for ubuntu support only at this time
+# perhaps in the future we can add gnome, kde, xfce, and MATE
 echo""
 read -p  "Would you like to create a desktop shortcut (yes/no)?"
 # add desktop icon 
@@ -91,8 +92,6 @@ printf "MAKE SURE YOUR WEBCAM IS PLUGGED IN :)\n"
 printf "\nIf you enjoy the project, please consider donating to Project Appleseed\n"
 printf "at www.appleseedinfo.org\n\n"
 printf "**************************************************\n\n\n"
-
-
 
 
 
