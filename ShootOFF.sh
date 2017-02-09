@@ -64,7 +64,7 @@ sudo chmod 744 $SHOOTOFF/ShootOFF.jar
 echo "Adding ShootOFF function to .bashrc..."
 #add function to bashrc to run ShootOFF from the command line 
 cat > $tmpSHOOTOFF/updateBashRC.txt <<EOL
-fucntion ShootOFF() {
+function ShootOFF() {
 	export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libv4l/v4l1compat.so;
 	cd ~/.ShootOFF	
 	java -jar ShootOFF.jar;
