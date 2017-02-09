@@ -1,3 +1,25 @@
+#! /bin/bash 
+
+#sudo check
+#intro text
+createDirsVars
+#text
+getInstallJava
+#text
+getInstallShootOFF
+#text
+updatePermissions
+#text
+addLaunchFunction
+#text
+removeTmpFiles
+#text
+finalCheck
+# if [ finalCheck ] 
+closingStatement
+
+
+
 function createDirsVars() { 
 	SHOOTOFF=~/.ShootOFF
 	tmpSHOOTOFF=/tmp/ShootOFFnukeWhenDone
