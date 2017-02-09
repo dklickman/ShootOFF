@@ -7,11 +7,12 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
-# Directory for ShootOFF Storage and tmp Storeage
+# Directory / vars for ShootOFF Storage and tmp Storeage
 SHOOTOFF=~/.ShootOFF
 tmpSHOOTOFF=/tmp/ShootOFFnukeWhenDone
 mkdir $SHOOTOFF
 mkdir $tmpSHOOTOFF
+USER=$USER
 
 
 <<"COMMENT2" 
@@ -27,7 +28,7 @@ printf "By pressing the return key, you are accepting the Java License Agreement
 read -p "Press CTRL-C to cancle out of the installer OR Press Enter to continue"
 
 
-# We are automating the acceptance of the license here...is that acceptable? 
+# We are automating the acceptance of the license here...is that acceptable / legal? 
 # xdg-open http://www.oracle.com/technetwork/java/javase/terms/license/index.html
 
 sudo add-apt-repository ppa:webupd8team/java -y 
@@ -56,10 +57,12 @@ unzip $tmpSHOOTOFF/shootoff-3.10-final.zip -d $SHOOTOFF
 # Give permission to read/write to shootoff.properties 
 # Somebody tell me if 777'ing this file is no bueno please??? 
 echo "Updating permissions..."
-sudo chmod 777 $SHOOTOFF/shootoff.properties
 
-# also need to 744 ShootOFF.jar to get the ShootOFF() function to work
-sudo chmod 744 $SHOOTOFF/ShootOFF.jar
+# quick fix for getting ownership back into user's domain, I think this can be fixed 
+# with a sudo -u on the creation of the directory $SHOOTOFF? 
+sudo chown -R $USER:$USER $SHOOTOFF 
+sudo chmod 777 $SHOOTOFF/shootoff.properties
+sudo chmod 777 $SHOOTOFF/ShootOFF.jar
 
 echo "Adding ShootOFF function to .bashrc..."
 #add function to bashrc to run ShootOFF from the command line 
@@ -72,7 +75,7 @@ function ShootOFF() {
 EOL
 # adding function from $tmpSHOOTOFF into user's bashrc @ 644
 cat $tmpSHOOTOFF/updateBashRC.txt >> ~/.bashrc
-source ~/.bashrc
+
 
 # TODO: create this function for ubuntu support only at this time
 # perhaps in the future we can add gnome, kde, xfce, and MATE
@@ -82,7 +85,10 @@ read -p  "Would you like to create a desktop shortcut (yes/no)?"
 
 
 printf "\nCleaning up file system and deleting old files...\n"
-sudo rm -rv $tmpSHOOTOFF
+#sudo rm -rv $tmpSHOOTOFF
+
+# reload .bashrc
+source ~/.bashrc
 
 printf "\n\n\n**************************************************\n"
 printf "ShootOFF has been installed on this system!\n" 
