@@ -12,7 +12,7 @@ fi
 
 
 # Directory / vars for ShootOFF Storage and tmp Storage
-function createStorageLocationsAndUIDs() { 
+function createStorageVarsUsers() { 
 	SHOOTOFF=~/.ShootOFF
 	tmpSHOOTOFF=/tmp/ShootOFFnukeWhenDone
 	mkdir $SHOOTOFF
@@ -20,6 +20,7 @@ function createStorageLocationsAndUIDs() {
 	USER=$USER
 	#update for future releases!
 	shootoffVersion=3.10
+
 }
 
 
@@ -75,7 +76,8 @@ function updatePermissions() {
 	echo "Done"
 }
 
-
+## TODO come back to this function for getting the LD_PRELOAD set up correctly 
+# for other distribution
 function addTerminalLaunch() {
 	echo "Adding ShootOFF function to .bashrc..."
 	cat > $tmpSHOOTOFF/updateBashRC.txt <<EOL
@@ -104,7 +106,7 @@ function cleanUpFiles() {
  
 
 ###### Sequential execution of script ######
-createStorageLocationsAndUIDs
+createStorageVarsUsers
 prompt1
 installJava
 downloadShootOff
