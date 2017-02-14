@@ -60,7 +60,7 @@ function downloadShootOff() {
  
 function extractShootOff() {
 	echo "Extracting ShootOFF"
-	unzip $tmpSHOOTOFF/shootoff-3.10-final.zip -d $SHOOTOFF
+	unzip $tmpSHOOTOFF/shootoff-$shootoffVersion-final.zip -d $SHOOTOFF
 	echo "Done"
 }
 
