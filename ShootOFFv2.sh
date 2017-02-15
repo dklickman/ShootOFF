@@ -37,7 +37,7 @@ function prompt2() {
 	printf "ShootOFF has been installed on this system!\n" 
 	printf "\nIf you would like to use the software please launch with the desktop icon\n"
 	printf "or simply type ShootOFF into the terminal\n" 
-	printf "MAKE SURE YOUR WEBCAM IS PLUGGED IN :)\n" 
+	printf "\nMAKE SURE YOUR WEBCAM IS PLUGGED IN :)\n" 
 	printf "\nIf you enjoy the project, please consider donating to Project Appleseed\n"
 	printf "at www.appleseedinfo.org\n\n"
 	printf "**************************************************\n\n\n" 
