@@ -57,7 +57,7 @@ function downloadShootOff() {
  
 function extractShootOff() {
 	echo "Extracting ShootOFF..."
-	unzip $tmpSHOOTOFF/shootoff-$shootOffVersion-final.zip -d $SHOOTOFF
+	sudo unzip $tmpSHOOTOFF/shootoff-$shootOffVersion-final.zip -d $SHOOTOFF
 	echo "Done"
 }
 
@@ -141,8 +141,8 @@ EOL
 ## I'm leaving this verbose because I'm assuming there will be changes 
 function updatePermissions() {
 	echo "Updating File Permissions..."
-	sudo chmod 666 $SHOOTOFF/shootoff.properties
-	sudo chmod 666 $SHOOTOFF/ShootOFF-diagnostics.jar
+	sudo chmod 644 $SHOOTOFF/shootoff.properties
+	sudo chmod 644 $SHOOTOFF/ShootOFF-diagnostics.jar
 	sudo chmod +x $SHOOTOFF/ShootOFF.jar 
 	sudo chmod +x /usr/local/bin/ShootOFF.sh
 	sudo chown -R $USER:$USER $SHOOTOFF 
