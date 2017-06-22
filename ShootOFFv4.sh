@@ -18,7 +18,7 @@ function createStorageVarsUsers() {
 	mkdir $SHOOTOFF
 	mkdir $tmpSHOOTOFF
 	#update for future releases!
-	shootOffVersion=3.10
+	shootOffVersion=4.0
 
 }
 
