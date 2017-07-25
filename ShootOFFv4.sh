@@ -118,7 +118,7 @@ function moveDesktopIconImage() {
 function createDesktopFile() {
 	cat > $tmpSHOOTOFF/ShootOFF.desktop <<EOL
 		[Desktop Entry]
-		Version=3.10
+		Version=$shootOffVersion
 		Name=ShootOFF
 		Comment=Launch ShootOFF script from /usr/local/bin 
 		Exec=ShootOFF.sh
