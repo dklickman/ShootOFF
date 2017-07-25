@@ -1,5 +1,5 @@
 #! /bin/bash
-# Script last edit: 20170223 by Dave K 
+# Script last edit: 20170724 by Dave K 
 
 # Check if user is root
 if [[ $EUID -ne 0 ]]; then
